@@ -8,6 +8,7 @@ from datetime import date
 from transactions import transactions_reader
 
 test_file = 'test.csv'
+wrong_file = "nonexistent.csv"
 rows = [
     ["Id", "Date", "Transaction"],
     ["0", "7/15", "+60.5"],
@@ -30,6 +31,25 @@ class TestCsv(unittest.TestCase):
         transaction_from_test_rows = rows[1:]
         assert transactions_data is not None
         assert transactions_data == transaction_from_test_rows
+
+    def test_get_transactions_data_from_csv_file_dont_exists(self):
+        with self.assertRaises(FileExistsError):
+            transactions_reader.get_transactions_data_from_csv(wrong_file)
+
+    def test_get_transactions_data_from_csv_file_wrong_rows(self):
+        wrong_rows = [
+            ["Id", "bar", "foo"],
+            ["0p0", "adfasdf", "asdf"],
+            ["1", "asdfadf", ""]
+        ]
+        with open(wrong_file, 'w', newline='') as csv_file:
+            writer = csv.writer(csv_file, dialect='excel')
+            writer.writerows(wrong_rows)
+
+        with self.assertRaises(ValueError):
+            transactions_reader.get_transactions_data_from_csv(wrong_file)
+
+        os.remove(wrong_file)
 
     def test_parse_csv_transactions_data(self):
         transaction_from_test_rows = rows[1:]
