@@ -1,10 +1,14 @@
+from dotenv import load_dotenv
+import os
 from transactions import transactions_reader
 from transactions import transactions_data_processor
+from emails import email_sender
 
 
 if __name__ == '__main__':
-    # TODO: use env variables
-    transactions_csv = "transactions.csv"
+    load_dotenv()
+    transactions_csv = os.environ.get("CVS_FILE")
+    print(os.environ.get("ROW_NAMES").split(","))
     csv_data = transactions_reader.get_transactions_data_from_csv(transactions_csv)
     transactions_data = transactions_reader.get_transactions_data(csv_data)
     total = transactions_data_processor.get_total_balance(transactions_data)
@@ -16,3 +20,7 @@ if __name__ == '__main__':
     print(credit)
     print(debit)
     print(transactions_data)
+
+    message = email_sender.generate_email_message(credit, debit, total, date_sorted)
+    email_sender.send_email("salazarpazomar@gmail.com", "Your Balance is Here!", message)
+

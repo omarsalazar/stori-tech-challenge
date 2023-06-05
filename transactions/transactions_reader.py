@@ -1,10 +1,14 @@
+import os
 import csv
 import datetime
 from typing import Any
 from datetime import date
 from os.path import exists
+from dotenv import load_dotenv
 
-row_names = ["Id", "Date", "Transaction"]
+
+load_dotenv()
+row_names = os.environ.get("ROW_NAMES").split(",")
 
 
 def get_transactions_data_from_csv(transaction_file: str) -> list[list[str]]:
