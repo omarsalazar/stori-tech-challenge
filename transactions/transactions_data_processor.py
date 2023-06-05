@@ -11,7 +11,7 @@ def get_total_balance(transactions_dict: list[dict[str, Any]]) -> float:
 def group_transaction_by_month(transactions_dict: list[dict[str, Any]]) -> dict[str, int]:
     amount_by_month = collections.Counter()
     for transaction in transactions_dict:
-        amount_by_month[calendar.month_name[transaction.get("date").month]] += transaction.get("transaction")
+        amount_by_month[calendar.month_name[transaction.get("date").month]] += 1
     return dict(amount_by_month)
 
 
