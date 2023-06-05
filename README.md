@@ -23,6 +23,7 @@ for the email that it's going to send the emails and save it,
 it's going to be useful in some steps.
 
     ![image](statics/Xe8Jt.gif)
+
     *via: https://stackoverflow.com/questions/72493643/google-disabled-access-to-less-secure-apps#:~:text=The%20only%20workaround%20I%20have,sendmail%20%2B%20ESMTP%20then%20works%20again.*
 
 
