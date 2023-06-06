@@ -38,6 +38,7 @@ it's going to be useful in some steps.
     EMAIL_ADDRESS=<sender-email>
     EMAIL_PASSWORD=<the-google-app-password-from-before>
     SEND_TO=<email-receiver>
+    SUBJECT=<email-subject>
     ```
 
  - Build the app:
