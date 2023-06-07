@@ -38,17 +38,23 @@ it's going to be useful in some steps.
     EMAIL_ADDRESS=<sender-email>
     EMAIL_PASSWORD=<the-google-app-password-from-before>
     SEND_TO=<email-receiver>
+    SUBJECT=<email-subject>
+    DB_NAME=stori
+    DB_USER=postgres
+    DB_PASS=secret
+    DB_HOST=db
+    DB_PORT=5432
     ```
 
  - Build the app:
     ```commandline
-    docker build -t stori-tech-challenge:latest . 
+    docker-compose build
     ```
 
 - Run the commands below in case there's missing migrations:
 
     ```commandline
-    docker run stori-tech-challenge:latest
+    docker-compose build
     ```
  
 - Once the email is sent you'll see something like this:
