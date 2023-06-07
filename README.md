@@ -51,7 +51,7 @@ it's going to be useful in some steps.
     docker-compose build
     ```
 
-- Run the commands below in case there's missing migrations:
+- Run the app:
 
     ```commandline
     docker-compose up
