@@ -1,5 +1,3 @@
-
-
 from datetime import datetime
 
 from app.databases.postgresql_connection import PostgresConnector

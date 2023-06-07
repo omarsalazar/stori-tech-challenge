@@ -4,18 +4,14 @@ from typing import Any
 from datetime import date
 from os.path import exists
 from dotenv import load_dotenv
-from dataclasses import dataclass
 
 load_dotenv()
 
 
-@dataclass
 class CSVReader:
-    file_path: str
-    row_names: list
 
     @staticmethod
-    def get_info_from_file(file_path, row_names) -> list[list[str]]:
+    def get_info_from_file(file_path: str, row_names: list[str]) -> list[list[str]]:
         if exists(file_path):
             with open(file_path) as transactions_file:
                 csv_reader = csv.reader(transactions_file, delimiter=',')
@@ -42,6 +38,6 @@ class CSVReader:
             for row in transactions_from_csv]
         return parsed_transactions_data
 
-    def get_csv_transactions_data(self) -> list[dict[str, Any]]:
-        info_from_file = self.get_info_from_file(file_path=self.file_path, row_names=self.row_names)
+    def get_csv_transactions_data(self, file_path: str, row_names: list[str]) -> list[dict[str, Any]]:
+        info_from_file = self.get_info_from_file(file_path=file_path, row_names=row_names)
         return self.format_csv_data(transactions_from_csv=info_from_file)

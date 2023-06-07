@@ -17,8 +17,8 @@ send_to = os.environ.get("SEND_TO")
 subject = os.environ.get("SUBJECT")
 
 if __name__ == '__main__':
-    csv_reader = CSVReader(file_path=transactions_csv, row_names=row_names)
-    csv_data = csv_reader.get_csv_transactions_data()
+    csv_reader = CSVReader()
+    csv_data = csv_reader.get_csv_transactions_data(file_path=transactions_csv, row_names=row_names)
     transaction_data = TransactionDataProcessor().get_transactions_data(csv_data)
 
     transaction_querier = TransactionQuerier()

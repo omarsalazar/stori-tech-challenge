@@ -1,6 +1,5 @@
 import os
 import psycopg2
-from dataclasses import dataclass
 from dotenv import load_dotenv
 
 load_dotenv()
