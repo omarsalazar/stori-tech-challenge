@@ -54,7 +54,7 @@ it's going to be useful in some steps.
 - Run the commands below in case there's missing migrations:
 
     ```commandline
-    docker-compose build
+    docker-compose up
     ```
  
 - Once the email is sent you'll see something like this:
