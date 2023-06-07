@@ -41,14 +41,16 @@ class TransactionDataProcessor:
         credit_transactions = [transaction.get("transaction")
                                for transaction in transactions_dict
                                if transaction.get("transaction") > 0]
-        return sum(credit_transactions)
+        total = sum(credit_transactions) / len(credit_transactions)
+        return float("{:.2f}".format(total))
 
     @staticmethod
     def get_debit_average(transactions_dict: list[dict[str, Any]]) -> float:
         debit_transactions = [transaction.get("transaction")
                               for transaction in transactions_dict
                               if transaction.get("transaction") < 0]
-        return abs(sum(debit_transactions))
+        total = sum(debit_transactions) / len(debit_transactions)
+        return float("{:.2f}".format(total))
 
     def get_transactions_data(self, csv_data) -> dict:
         return {

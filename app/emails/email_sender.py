@@ -81,3 +81,4 @@ class EmailSender:
     def execute(self) -> None:
         self.generate_email_message()
         self.send_email(to=self.send_to, subject=self.subject, message=self.email_message)
+        print(f"Email sent to {self.send_to}")
